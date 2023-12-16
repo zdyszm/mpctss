@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "winsock.h": "c",
+        "network.h": "c",
+        "ecdsa.h": "c",
+        "time.h": "c",
+        "bignum.h": "c",
+        "*.tcc": "c",
+        "mpc_helpers.h": "c",
+        "mpc.h": "c",
+        "fstream": "c",
+        "ws2tcpip.h": "c"
+    }
+}

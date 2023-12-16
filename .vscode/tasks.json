@@ -1,0 +1,49 @@
+{   
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}/build"
+    },
+    "tasks": [
+        // Task 1：生成build文件夹
+        {
+            "type": "shell", // 这里决定了task的类型，shell类型就是在命令行里运行command的命令，还有一种类型是“process”，这里就不介绍了
+            "label": "mk_build", // task的名字
+            "command": "mkdir", // 需要被运行的命令
+            "args": ["build"], // 传递给command的参数
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+        },
+        {
+            "type": "shell",
+            "label": "cmake",//第一个动作，执行cmake
+            "command": "cmake",
+            "args": [
+                "-G",
+                "MinGW Makefiles", // 这里必须定义生成器，否则默认cmake生成的是VS Studio可编译的工程
+                ".."
+            ]
+        },
+        {
+            "label": "mingw32-make",//第二个动作，执行make
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "mingw32-make",
+            "args": [
+                
+
+            ]
+        },
+        {
+            "label": "Build",//把上面的两个动作绑定，命名为Build
+			"dependsOrder": "sequence", 
+            "dependsOn":[
+                "cmake",
+                "mingw32-make"
+            ]
+        }
+    ]
+
+}
